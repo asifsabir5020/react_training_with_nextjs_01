@@ -1,12 +1,18 @@
 .container {
     width: fit-content;
+    border: 1px solid gray;
+}
+
+.formContent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 20px;
 }
 
 .personalInfoSection {
-    border: 1px solid gray;
     display: flex;
-
-    padding: 10px;
 }
 
 .image{
@@ -33,8 +39,20 @@
     border: 1px solid gray;
 }
 
+.selectField {
+    min-width: 300px;
+    padding: 10px;
+}
+
 .fieldLabel{
     margin-right: 15px;
     text-align: right;
     color: gray;
+}
+
+
+.academicInfoSection {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
