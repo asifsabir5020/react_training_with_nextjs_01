@@ -1,6 +1,9 @@
-.formContent {
+.container {
+    width: fit-content;
     border: 1px solid gray;
-    width: 800px;
+}
+
+.formContent {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -12,7 +15,7 @@
     display: flex;
 }
 
-.image{
+.image {
     width: 200px;
 }
 
@@ -30,6 +33,13 @@
     font-size: 20px;
 }
 
+.formFieldVertical {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 20px;
+}
+
 .inputField {
     min-width: 300px;
     padding: 10px;
@@ -41,7 +51,7 @@
     padding: 10px;
 }
 
-.fieldLabel{
+.fieldLabel {
     margin-right: 15px;
     text-align: right;
     color: gray;
@@ -50,6 +60,6 @@
 
 .academicInfoSection {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 20px;
 }
