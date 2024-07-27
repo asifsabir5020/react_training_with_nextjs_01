@@ -4,7 +4,7 @@ export const classes = [
     { id: 3, title: '7th', value: 7 },
     { id: 4, title: '8th', value: 8 },
     { id: 5, title: '9th', value: 9 },
-    { id: 1, title: '10th', value: 10 },
+    { id: 6, title: '10th', value: 10 },
 ]
 
 export const grades = [

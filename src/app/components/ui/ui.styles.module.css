@@ -1,30 +1,3 @@
-.container {
-    width: fit-content;
-    border: 1px solid gray;
-}
-
-.formContent {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 20px;
-    gap: 20px;
-}
-
-.personalInfoSection {
-    display: flex;
-}
-
-.image {
-    width: 200px;
-}
-
-.infoSection {
-    margin-left: 100px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
 
 .formField {
     display: flex;
@@ -40,26 +13,8 @@
     font-size: 20px;
 }
 
-.inputField {
-    min-width: 300px;
-    padding: 10px;
-    border: 1px solid gray;
-}
-
-.selectField {
-    min-width: 300px;
-    padding: 10px;
-}
-
 .fieldLabel {
     margin-right: 15px;
     text-align: right;
     color: gray;
-}
-
-
-.academicInfoSection {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
 }

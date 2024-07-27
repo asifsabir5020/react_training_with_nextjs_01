@@ -4,7 +4,7 @@ import uiStyles from '../../ui.styles.module.css'
 import styles from './styles.module.css'
 
 export const Input = props => {
-    const { label, placeholder, variant } = props
+    const { label, placeholder, variant, onChange = () => null } = props
     const fieldClass = variant === 'vertical' ? uiStyles.formFieldVertical : uiStyles.formField
     return (
         <div className={fieldClass}>
@@ -14,6 +14,7 @@ export const Input = props => {
             <input
                 className={styles.inputField}
                 placeholder={placeholder}
+                onChange={onChange}
             />
         </div>
     )
