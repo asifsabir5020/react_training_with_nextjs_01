@@ -15,8 +15,14 @@ const initialState = {
     admissionClass: ''
 }
 
-export const StudentAdmissionForm = () => {
+export const StudentAdmissionForm = (props) => {
+    const { setStudents } = props
     const [formData, setFormData] = useState(initialState)
+
+    const handleDataSave = () => {
+        setStudents(preState => ([...preState, formData]))
+        setFormData(initialState)
+    }
 
     return (
         <div className={styles.container}>
@@ -84,6 +90,11 @@ export const StudentAdmissionForm = () => {
                                 setFormData(preState => ({...preState, admissionClass: value}))
                             }}
                         />
+                    </div>
+                    <div className={styles.submitSection}>
+                            <button type='button' onClick={handleDataSave}>
+                                Save
+                            </button>
                     </div>
                     <div className={styles.formData}>
                         {JSON.stringify(formData)}
