@@ -41,6 +41,7 @@ export const StudentAdmissionForm = (props) => {
                                     setFormData(preState => ({...preState, name: value}))
                                 }}
                                 variant="vertical"
+                                value={formData.name}
                             />
                             <Input
                                 label="Father Name"
@@ -50,6 +51,7 @@ export const StudentAdmissionForm = (props) => {
                                     setFormData(preState => ({...preState, fatherName: value}))
                                 }}
                                 variant="vertical"
+                                value={formData.fatherName}
                             />
                             <Input
                                 label="B-Form"
@@ -59,6 +61,7 @@ export const StudentAdmissionForm = (props) => {
                                     setFormData(preState => ({...preState, bForm: value}))
                                 }}
                                 variant="vertical"
+                                value={formData.bForm}
                             />
                         </div>
                     </div>
@@ -71,6 +74,7 @@ export const StudentAdmissionForm = (props) => {
                                 const value = e.target.value
                                 setFormData(preState => ({...preState, lastClass: value}))
                             }}
+                            value={formData.lastClass}
                         />
                         <Select
                             label="Last Grade"
@@ -80,6 +84,7 @@ export const StudentAdmissionForm = (props) => {
                                 const value = e.target.value
                                 setFormData(preState => ({...preState, lastGrade: value}))
                             }}
+                            value={formData.lastGrade}
                         />
                         <Select
                             label="Admission Class"
@@ -89,6 +94,7 @@ export const StudentAdmissionForm = (props) => {
                                 const value = e.target.value
                                 setFormData(preState => ({...preState, admissionClass: value}))
                             }}
+                            value={formData.admissionClass}
                         />
                     </div>
                     <div className={styles.submitSection}>
