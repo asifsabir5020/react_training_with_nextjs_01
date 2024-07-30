@@ -4,18 +4,19 @@ import uiStyles from '../../ui.styles.module.css'
 import styles from './styles.module.css'
 
 export const Select = props => {
-    const { label, list, variant, onChange = () => null, value } = props
+    const { label, options, variant, onChange = () => null, value, placeholder: providedPlaceholder } = props
     const fieldClass = variant === 'vertical' ? uiStyles.formFieldVertical : uiStyles.formField
+    const placeholder = providedPlaceholder ? providedPlaceholder : 'Select Option'
     return (
         <div className={fieldClass}>
             <label className={uiStyles.fieldLabel}>
                 {label}
             </label>
-            <select onChange={onChange} className={styles.selectField}>
-                <option key="000" disabled>Select Grade</option>
-                {list.map(g => {
+            <select value={value} onChange={onChange} className={styles.selectField}>
+                <option key="000" value=''>{placeholder}</option>
+                {options.map(option => {
                     return (
-                        <option key={g.id}>{g.title}</option>
+                        <option key={option.id} value={option.id}>{option.title}</option>
                     )
                 })}
             </select>

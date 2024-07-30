@@ -68,33 +68,36 @@ export const StudentAdmissionForm = (props) => {
                     <div className={styles.academicInfoSection}>
                         <Select
                             label="Last Class"
-                            list={classes}
+                            options={classes}
                             variant="vertical"
                             onChange={e => {
                                 const value = e.target.value
                                 setFormData(preState => ({...preState, lastClass: value}))
                             }}
                             value={formData.lastClass}
+                            placeholder="Select Class"
                         />
                         <Select
                             label="Last Grade"
-                            list={grades}
+                            options={grades}
                             variant="vertical"
                             onChange={e => {
                                 const value = e.target.value
                                 setFormData(preState => ({...preState, lastGrade: value}))
                             }}
                             value={formData.lastGrade}
+                            placeholder="Select Grade"
                         />
                         <Select
                             label="Admission Class"
-                            list={classes}
+                            options={classes}
                             variant="vertical"
                             onChange={e => {
                                 const value = e.target.value
                                 setFormData(preState => ({...preState, admissionClass: value}))
                             }}
                             value={formData.admissionClass}
+                            placeholder="Select Class"
                         />
                     </div>
                     <div className={styles.submitSection}>
