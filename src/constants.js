@@ -8,8 +8,8 @@ export const classes = [
 ]
 
 export const grades = [
-    { id: 1, title: 'A' },
-    { id: 2, title: 'B' },
-    { id: 3, title: 'C' },
-    { id: 4, title: 'F' },
+    { id: 'a', title: 'A' },
+    { id: 'b', title: 'B' },
+    { id: 'c', title: 'C' },
+    { id: 'f', title: 'F' },
 ]
