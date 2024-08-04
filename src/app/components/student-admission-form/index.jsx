@@ -34,8 +34,12 @@ export const StudentAdmissionForm = (props) => {
             alert("Please fill Student Information completely!")
             return
         }
+        const payloadToSave = {
+            ...formData,
+            lastClass: classes.find(el => el.id == formData.lastClass).title
+        }
 
-        setStudents(preState => ([...preState, formData]))
+        setStudents(preState => ([...preState, payloadToSave]))
         setFormData(initialState)
     }
 
