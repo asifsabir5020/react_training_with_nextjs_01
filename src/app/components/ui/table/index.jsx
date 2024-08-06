@@ -1,8 +1,9 @@
 'use client'
 
+import { Button } from '../button'
 import styles from './styles.module.css'
 
-export const Table = ({ list, header }) => {
+export const Table = ({ list, header, actions = [] }) => {
     if (header.length === 0) return null
     return (
         <div className={styles.container}>
@@ -27,9 +28,28 @@ export const Table = ({ list, header }) => {
                         {list.map((row, index) => {
                             return (
                                 <tr key={index} className={styles.tr}>
-                                    {header.map((h, index) => {
+                                    {header.map((c, index) => {
                                         return (
-                                            <td key={index}>{row[h.id]}</td>
+                                            <>
+                                                {c.id === 'actions' ? (
+                                                    <>
+                                                        {actions.map(a => {
+                                                            return (
+                                                                <td key={index}>
+                                                                    <Button
+                                                                        title={a.label}
+                                                                        onClick={() => a?.onClick(row.id)}
+                                                                    />
+                                                                </td>
+                                                            )
+                                                        })}
+                                                    </>
+
+                                                ) : (
+                                                    <td key={index}>{row[c.id]}</td>
+                                                )}
+
+                                            </>
                                         )
                                     })}
                                 </tr>

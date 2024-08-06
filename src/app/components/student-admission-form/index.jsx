@@ -1,10 +1,11 @@
 'use client'
 
+import { v4 as uuidv4 } from 'uuid';
 import { classes, grades } from '@/constants'
 import styles from './styles.module.css'
 import { Select } from '../ui/form/select'
 import { Input } from '../ui/form/input'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button } from '../ui/button'
 
 const initialState = {
@@ -17,7 +18,7 @@ const initialState = {
 }
 
 export const StudentAdmissionForm = (props) => {
-    const { setStudents } = props
+    const { setStudents, selectedStudent } = props
     const [formData, setFormData] = useState(initialState)
 
     const isSaveButtonDisabled = (
@@ -28,7 +29,11 @@ export const StudentAdmissionForm = (props) => {
         !formData.lastGrade ||
         !formData.admissionClass
     )
-
+    
+    useEffect(() => {
+        setFormData(selectedStudent)
+    },[selectedStudent])
+    
     const handleDataSave = () => {
         if (isSaveButtonDisabled) {
             alert("Please fill Student Information completely!")
@@ -36,6 +41,7 @@ export const StudentAdmissionForm = (props) => {
         }
         const payloadToSave = {
             ...formData,
+            id: uuidv4(),
             lastClass: classes.find(el => el.id == formData.lastClass).title,
             lastGrade: (formData.lastGrade).toUpperCase(),
             admissionClass: classes.find(el => el.id == formData.admissionClass).title
