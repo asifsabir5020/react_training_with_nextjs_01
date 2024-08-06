@@ -36,7 +36,9 @@ export const StudentAdmissionForm = (props) => {
         }
         const payloadToSave = {
             ...formData,
-            lastClass: classes.find(el => el.id == formData.lastClass).title
+            lastClass: classes.find(el => el.id == formData.lastClass).title,
+            lastGrade: (formData.lastGrade).toUpperCase(),
+            admissionClass: classes.find(el => el.id == formData.admissionClass).title
         }
 
         setStudents(preState => ([...preState, payloadToSave]))

@@ -17,9 +17,11 @@ export const Table = ({ list, header }) => {
                     </tr>
                 </thead>
                 {(list.length === 0) ? (
-                    <tr>
-                        <td>There is No Data!</td>
-                    </tr>
+                    <tbody>
+                        <tr colSpan={header.length}>
+                            <td>There is No Data!</td>
+                        </tr>
+                    </tbody>
                 ) : (
                     <tbody className={styles.tbody}>
                         {list.map((row, index) => {
