@@ -29,24 +29,24 @@ export const Table = ({ list, header, actions = [] }) => {
                             return (
                                 <tr key={index} className={styles.tr}>
                                     {header.map((c, index) => {
+                                        const titleId = c?.titleId || c?.id
                                         return (
                                             <>
                                                 {c.id === 'actions' ? (
-                                                    <>
-                                                        {actions.map(a => {
+                                                    <td key={index} className={styles.actions}>
+                                                        {actions.map((a, i) => {
                                                             return (
-                                                                <td key={index}>
-                                                                    <Button
-                                                                        title={a.label}
-                                                                        onClick={() => a?.onClick(row.id)}
-                                                                    />
-                                                                </td>
+                                                                <Button
+                                                                    key={`${row.id}-${i}`}
+                                                                    title={a.label}
+                                                                    onClick={() => a?.onClick(row.id)}
+                                                                    icon
+                                                                />
                                                             )
                                                         })}
-                                                    </>
-
+                                                    </td>
                                                 ) : (
-                                                    <td key={index}>{row[c.id]}</td>
+                                                    <td key={index}>{row[titleId]}</td>
                                                 )}
 
                                             </>

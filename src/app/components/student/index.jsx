@@ -12,8 +12,10 @@ export const Student = () => {
     return (
         <div className={styles.container}>
             <StudentAdmissionForm
+                students={students}
                 setStudents={setStudents}
                 selectedStudent={selectedStudent}
+                setSelectedStudent={setSelectedStudent}
             />
             <StudentTable
                 students={students}

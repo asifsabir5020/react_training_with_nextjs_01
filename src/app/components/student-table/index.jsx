@@ -1,7 +1,10 @@
 'use client'
 
+import { FaRegPenToSquare, FaRegTrashCan } from "react-icons/fa6";
+
 import { Table } from '../ui/table'
 import styles from './styles.module.css'
+import { Icon } from "../ui/icon";
 
 export const StudentTable = ({ students, setSelectedStudent }) => {
 
@@ -10,23 +13,31 @@ export const StudentTable = ({ students, setSelectedStudent }) => {
         setSelectedStudent(student)
     }
 
+    const handleDelete = id => {
+        console.log('id:#:', id)
+    }
+
     return (
         <div className={styles.container}>
             <Table
                 list={students}
                 header={[
-                    {id: 'name', value: 'Name'},
-                    {id: 'fatherName', value: 'Father Name'},
-                    {id: 'bForm', value: 'B Form'},
-                    {id: 'lastClass', value: 'Last Class'},
-                    {id: 'lastGrade', value: 'Last Grade'},
-                    {id: 'admissionClass', value: 'Admission Class'},
-                    {id: 'actions', value: 'Actions'}
+                    { id: 'name', value: 'Name' },
+                    { id: 'fatherName', value: 'Father Name' },
+                    { id: 'bForm', value: 'B Form' },
+                    { id: 'lastClass', titleId: 'lastClassTitle', value: 'Last Class' },
+                    { id: 'lastGrade', titleId: 'lastGradeTitle', value: 'Last Grade' },
+                    { id: 'admissionClass', titleId: 'admissionClassTitle', value: 'Admission Class' },
+                    { id: 'actions', value: 'Actions' }
                 ]}
                 actions={[
                     {
-                        label: 'Edit',
+                        label: <FaRegPenToSquare />,
                         onClick: handleEdit,
+                    },
+                    {
+                        label: <FaRegTrashCan />,
+                        onClick: handleDelete,
                     }
                 ]}
             />
