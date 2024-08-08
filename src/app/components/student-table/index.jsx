@@ -1,12 +1,10 @@
 'use client'
 
 import { FaRegPenToSquare, FaRegTrashCan } from "react-icons/fa6";
-
 import { Table } from '../ui/table'
 import styles from './styles.module.css'
-import { Icon } from "../ui/icon";
 
-export const StudentTable = ({ students, setSelectedStudent }) => {
+export const StudentTable = ({ students, setStudents, setSelectedStudent }) => {
 
     const handleEdit = id => {
         const student = students.find(el => el.id === id)
@@ -14,7 +12,7 @@ export const StudentTable = ({ students, setSelectedStudent }) => {
     }
 
     const handleDelete = id => {
-        console.log('id:#:', id)
+        setStudents(students.filter(s => s.id !== id))
     }
 
     return (

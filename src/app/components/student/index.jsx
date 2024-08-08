@@ -19,6 +19,7 @@ export const Student = () => {
             />
             <StudentTable
                 students={students}
+                setStudents={setStudents}
                 setSelectedStudent={setSelectedStudent}
             />
         </div>

@@ -37,8 +37,6 @@ export const StudentAdmissionForm = (props) => {
             setFormData(selectedStudent)
         }
     }, [selectedStudent])
-    console.log('selectedStudent:#:', selectedStudent)
-
 
     const handleDataSave = () => {
         if (isSaveButtonDisabled) {
