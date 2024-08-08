@@ -1,8 +1,9 @@
 'use client'
 
+import { Button } from '../button'
 import styles from './styles.module.css'
 
-export const Table = ({ list, header }) => {
+export const Table = ({ list, header, actions = [] }) => {
     if (header.length === 0) return null
     return (
         <div className={styles.container}>
@@ -27,9 +28,28 @@ export const Table = ({ list, header }) => {
                         {list.map((row, index) => {
                             return (
                                 <tr key={index} className={styles.tr}>
-                                    {header.map((h, index) => {
+                                    {header.map((c, index) => {
+                                        const titleId = c?.titleId || c?.id
                                         return (
-                                            <td key={index}>{row[h.id]}</td>
+                                            <>
+                                                {c.id === 'actions' ? (
+                                                    <td key={index} className={styles.actions}>
+                                                        {actions.map((a, i) => {
+                                                            return (
+                                                                <Button
+                                                                    key={`${row.id}-${i}`}
+                                                                    title={a.label}
+                                                                    onClick={() => a?.onClick(row.id)}
+                                                                    icon
+                                                                />
+                                                            )
+                                                        })}
+                                                    </td>
+                                                ) : (
+                                                    <td key={index}>{row[titleId]}</td>
+                                                )}
+
+                                            </>
                                         )
                                     })}
                                 </tr>

@@ -7,11 +7,21 @@ import { StudentTable } from "../student-table";
 
 export const Student = () => {
     const [students, setStudents] = useState([])
+    const [selectedStudent, setSelectedStudent] = useState({})
 
     return (
         <div className={styles.container}>
-            <StudentAdmissionForm setStudents={setStudents} />
-            <StudentTable students={students}/>
+            <StudentAdmissionForm
+                students={students}
+                setStudents={setStudents}
+                selectedStudent={selectedStudent}
+                setSelectedStudent={setSelectedStudent}
+            />
+            <StudentTable
+                students={students}
+                setStudents={setStudents}
+                setSelectedStudent={setSelectedStudent}
+            />
         </div>
     )
 }

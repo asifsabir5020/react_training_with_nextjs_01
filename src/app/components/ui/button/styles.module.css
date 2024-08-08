@@ -1,6 +1,14 @@
 .button {
     padding: 10px 10px;
     min-width: 150px;
-    border: 1px solid gray;
+    border: 1px solid #d4cfcf;
     cursor: pointer;
+}
+
+.iconButton {
+    padding: 2px 5px;
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+    border: 1px solid #d4cfcf;
 }

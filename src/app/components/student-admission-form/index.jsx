@@ -1,10 +1,11 @@
 'use client'
 
+import { v4 as uuidv4 } from 'uuid';
 import { classes, grades } from '@/constants'
 import styles from './styles.module.css'
 import { Select } from '../ui/form/select'
 import { Input } from '../ui/form/input'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button } from '../ui/button'
 
 const initialState = {
@@ -17,8 +18,10 @@ const initialState = {
 }
 
 export const StudentAdmissionForm = (props) => {
-    const { setStudents } = props
+    const { students, setStudents, selectedStudent, setSelectedStudent } = props
     const [formData, setFormData] = useState(initialState)
+
+    const isEdit = Object.keys(selectedStudent).length > 0
 
     const isSaveButtonDisabled = (
         !formData.name ||
@@ -29,6 +32,12 @@ export const StudentAdmissionForm = (props) => {
         !formData.admissionClass
     )
 
+    useEffect(() => {
+        if (isEdit) {
+            setFormData(selectedStudent)
+        }
+    }, [selectedStudent])
+
     const handleDataSave = () => {
         if (isSaveButtonDisabled) {
             alert("Please fill Student Information completely!")
@@ -36,12 +45,28 @@ export const StudentAdmissionForm = (props) => {
         }
         const payloadToSave = {
             ...formData,
-            lastClass: classes.find(el => el.id == formData.lastClass).title,
-            lastGrade: (formData.lastGrade).toUpperCase(),
-            admissionClass: classes.find(el => el.id == formData.admissionClass).title
+            id: uuidv4(),
+            lastClassTitle: classes.find(el => el.id == formData.lastClass).title,
+            lastGradeTitle: (formData.lastGrade).toUpperCase(),
+            admissionClassTitle: classes.find(el => el.id == formData.admissionClass).title
         }
 
-        setStudents(preState => ([...preState, payloadToSave]))
+        if (isEdit) {
+            const id = selectedStudent.id
+            const updatedList = students.map(s => {
+                if(s.id === id){
+                    return {
+                        ...selectedStudent,
+                        ...formData
+                    }
+                }
+                return s
+            })
+            setStudents(updatedList)
+            setSelectedStudent({})
+        } else {
+            setStudents(preState => ([...preState, payloadToSave]))
+        }
         setFormData(initialState)
     }
 
@@ -123,7 +148,7 @@ export const StudentAdmissionForm = (props) => {
                     </div>
                     <div className={styles.submitSection}>
                         <Button
-                            title={'Save'}
+                            title={isEdit ? 'Update' : 'Save'}
                             onClick={handleDataSave}
                             disabled={isSaveButtonDisabled}
                         />
